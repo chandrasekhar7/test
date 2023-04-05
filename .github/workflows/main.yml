@@ -6,7 +6,7 @@ on:
       reviewer:
         description: 'The person who needs to approve the deployment to production'
         required: false
-        default: 'chandrasekhar7'
+        default: ''
 
 jobs:
   deploy:
