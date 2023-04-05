@@ -3,10 +3,10 @@ name: Deploy to Production
 on:
   workflow_dispatch:
     inputs:
-      reviewer:
-        description: 'The person who needs to approve the deployment to production'
-        required: false
-        default: ''
+      approval:
+        description: 'Approve the deployment to production'
+        required: true
+        default: ''''
 
 jobs:
   deploy:
