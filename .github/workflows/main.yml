@@ -1,0 +1,34 @@
+name: Deploy to Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      reviewer:
+        description: 'The person who needs to approve the deployment to production'
+        required: true
+        default: ''
+
+jobs:
+  deploy:
+    if: ${{ github.event.inputs.approval == 'approved' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Add steps to build and test the application
+
+     # - name: Deploy to production
+      #  uses: some-action-to-deploy-to-production
+
+  request-approval:
+    if: ${{ github.event.inputs.approval != 'approved' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request manual approval
+        uses: peter-evans/wait-on-approval@v2
+        with:
+          reviewers: ${{ github.event.inputs.reviewer }}
+          message: 'Please review and approve the deployment to production.'
+      - name: Deployment approved
+        run: echo 'Deployment to production approved.'
