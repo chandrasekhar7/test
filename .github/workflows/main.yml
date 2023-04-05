@@ -16,8 +16,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Add steps to build and test the application
-
-     # - name: Deploy to production
-      #  uses: some-action-to-deploy-to-production
+  request-approval:
+    if: ${{ github.event.inputs.approval != 'approved' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request manual approval
+        uses: peter-evans/wait-on-approval@v2
+        with:
+          reviewers: your-reviewer-username
+          message: 'Please review and approve the deployment to production.'
+      - name: Deployment approved
+        run: echo 'Deployment to production approved.'
 
