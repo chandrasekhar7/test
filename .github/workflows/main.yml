@@ -23,7 +23,7 @@ jobs:
       - name: Request manual approval
         uses: peter-evans/wait-on-approval@v2
         with:
-          reviewers: your-reviewer-username
+          reviewers: chandrasekhar7
           message: 'Please review and approve the deployment to production.'
       - name: Deployment approved
         run: echo 'Deployment to production approved.'
