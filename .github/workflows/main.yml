@@ -6,7 +6,7 @@ on:
       approval:
         description: 'Approve the deployment to production'
         required: true
-        default: ''''
+        default: ''
 
 jobs:
   deploy:
