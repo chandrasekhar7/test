@@ -1,0 +1,17 @@
+name: Build and Publish
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main	
+  workflow_dispatch:
+jobs:  
+  Staging:  
+    name: Build and Publish and publish
+    runs-on: ubuntu-latest
+    environment:
+      name: DEV
+    steps:
+        - uses: actions/checkout@v3
